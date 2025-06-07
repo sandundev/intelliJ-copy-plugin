@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>com.example.copyfilecontents</id>
+    <name>Copy File Contents</name>
+    <version>1.0</version>
+    <vendor>Sandun</vendor>
+
+    <description>
+        Adds a context menu action to copy contents of selected files (with full paths) to the clipboard.
+    </description>
+
+    <actions>
+        <action id="CopyFileContentsAction"
+                class="CopyFileContentsAction"
+                text="Copy Contents of Selected Files to Clipboard"
+                description="Copies the full content of selected files to clipboard.">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
