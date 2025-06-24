@@ -3,8 +3,9 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.ide.CopyPasteManager
 import java.awt.datatransfer.StringSelection
+import com.intellij.openapi.project.DumbAware
 
-class CopyFileContentsAction : AnAction("Copy Contents of Selected Files to Clipboard") {
+class CopyFileContentsAction : AnAction("Copy Contents of Selected Files to Clipboard"), DumbAware {
     override fun actionPerformed(e: AnActionEvent) {
         val files = e.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY) ?: return
         val builder = StringBuilder()
@@ -22,7 +23,6 @@ class CopyFileContentsAction : AnAction("Copy Contents of Selected Files to Clip
     }
 
     override fun update(e: AnActionEvent) {
-        val files = e.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY)
-        e.presentation.isEnabledAndVisible = files != null && files.any { !it.isDirectory }
+        e.presentation.isEnabledAndVisible = true
     }
 }
