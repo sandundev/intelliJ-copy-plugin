@@ -31,3 +31,6 @@ bin/
 /.gradle/
 /build/
 /build/classes/kotlin/main/
+/.gradle/
+/build/
+/.idea/

@@ -21,5 +21,26 @@
                 description="Copy selected Dart file and its local imports">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
+        <action
+                id="CopyAllOpenedFileContentsAction"
+                class="CopyAllOpenedFileContentsAction"
+                text="Copy All Opened File Contents"
+                description="Copy the contents of all currently opened editor tabs to the clipboard">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+        <action id="CopyOpenedFileNamesAction"
+                class="CopyOpenedFileNamesAction"
+                text="Copy Opened File Names"
+                description="Copy relative names of all opened editor files">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+        <action id="CopySelectedFileNamesAction"
+                class="CopySelectedFileNamesAction"
+                text="Copy Selected File Names"
+                description="Copy relative names of selected files">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>
