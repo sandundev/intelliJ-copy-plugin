@@ -26,6 +26,14 @@ The plugin adds several context menu actions inside IntelliJ IDEA:
 - **Copy Selected File Names**  
   Copies the relative paths (from the project root) of selected files in the Project tool window.
 
+### 🔄 Git Integration
+- **Open All Changed Files**  
+  Opens all changed files from the current diff/changes list directly in the editor. Available in:
+  - Changes view popup menu (when viewing Compare with Local results)
+  - Git Log commit context menu (uses a git-diff fallback to compute changed files)
+  - Works with selected changes or all visible changes if none selected
+
+
 ---
 
 ## 🔧 Build & Install
@@ -34,7 +42,7 @@ The plugin adds several context menu actions inside IntelliJ IDEA:
 ```bash
 git clone https://github.com/sandundev/intelliJ-copy-plugin.git
 cd intelliJ-copy-plugin
-````
+```
 
 ### 2. Build the plugin
 
@@ -95,23 +103,20 @@ build/distributions/
 
 ---
 
-## 💡 Example Use Cases
+## 💡 Usage: where to find "Open All Changed Files"
 
-* Quickly copying multiple files to paste into **AI prompts**.
-* Exporting **Dart files with their dependencies** for sharing.
-* Grabbing a list of **relative file paths** for documentation, bug reports, or project planning.
-* Preparing **clean snippets** for code reviews.
+The action can appear in two places depending on your workflow:
 
----
+1) Compare / Changes view (recommended flow)
+- Open `Git` → `Log`.
+- Right‑click an older commit and choose `Compare with Local`.
+- A new tool window / popup will show the list of changed files (the Changes view).
+- Right‑click inside *that list* (the changes/diff view) — you should see `Open All Changed Files`. This will open each changed file in an editor tab.
 
-## 📝 Notes
+2) Git Log commit context menu (convenience)
+- Right‑click a commit in the Git Log directly. The action is also registered in the commit popup, but in this context the plugin needs to compute changed files itself. The plugin will run `git diff --name-only <commit> HEAD` in your project root to find changed files and open them.
 
-* Works with IntelliJ IDEA 2021.1+ (IC/Ultimate).
-* If you hit build issues, try:
-
-  ```bash
-  ./gradlew clean build
-  ```
+Note: if the action is visible but disabled in a given context, it means the plugin couldn't locate changes or resolve a commit id from that menu context.
 
 ---
 
@@ -124,4 +129,3 @@ build/distributions/
 
 Happy coding & prompting 🚀
 © Sandun Lewke Bandara
-```
