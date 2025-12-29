@@ -5,7 +5,8 @@
     <vendor>Sandun</vendor>
 
     <description>
-        Adds a context menu action to copy contents of selected files (with full paths) to the clipboard.
+        Adds context menu actions to copy contents of selected files to the clipboard,
+        and utilities for opening changed files.
     </description>
 
     <actions>
@@ -15,20 +16,22 @@
                 description="Copies the full content of selected files to clipboard.">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
+
         <action id="CopyDartWithRelatedFiles"
                 class="CopyDartWithRelatedFilesAction"
                 text="Copy This and Related Dart Files"
                 description="Copy selected Dart file and its local imports">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
-        <action
-                id="CopyAllOpenedFileContentsAction"
+
+        <action id="CopyAllOpenedFileContentsAction"
                 class="CopyAllOpenedFileContentsAction"
                 text="Copy All Opened File Contents"
                 description="Copy the contents of all currently opened editor tabs to the clipboard">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
+
         <action id="CopyOpenedFileNamesAction"
                 class="CopyOpenedFileNamesAction"
                 text="Copy Opened File Names"
@@ -36,26 +39,28 @@
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
+
         <action id="CopySelectedFileNamesAction"
                 class="CopySelectedFileNamesAction"
                 text="Copy Selected File Names"
                 description="Copy relative names of selected files">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
+
+        <!-- ✅ Git Log commit menu only -->
         <action id="com.example.plugin.OpenAllChangedFiles"
                 class="com.example.plugin.actions.OpenAllChangedFilesAction"
-                text="Open All Changed Files"
-                description="Opens all changed files from the current diff/changes list in the editor">
-            <add-to-group group-id="ChangesViewPopupMenu" anchor="last"/>
-            <add-to-group group-id="Vcs.ChangesViewPopupMenu" anchor="last"/>
-            <add-to-group group-id="Vcs.ChangesView.PopupMenu" anchor="last"/>
-            <add-to-group group-id="Vcs.ChangesViewPopupMenu" anchor="last"/>
+                text="Open All Changed Files Since This Commit"
+                description="Opens all files touched from the selected commit onward (plus local changes).">
             <add-to-group group-id="Git.Log.ContextMenu" anchor="last"/>
             <add-to-group group-id="Vcs.Log.ContextMenu" anchor="last"/>
-            <add-to-group group-id="Vcs.Log.PopupMenu" anchor="last"/>
-            <!-- Extra placements to make the action easier to discover -->
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
+
     </actions>
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="OpenAllChangedFiles"
+                           displayType="BALLOON"
+                           isLogByDefault="false"
+                           title="Open All Changed Files"/>
+    </extensions>
 </idea-plugin>
