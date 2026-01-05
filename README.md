@@ -16,9 +16,6 @@ The plugin adds several context menu actions inside IntelliJ IDEA:
 - **Copy All Opened File Contents**  
   Copies the contents of all currently opened editor tabs, with headers for each file.
 
-- **Copy This and Related Dart Files**  
-  Special Dart support: copies a selected Dart file along with all project-local imports it references (following `import` statements).
-
 ### 📄 File Name Copying
 - **Copy Opened File Names**  
   Copies the relative paths (from the project root) of all currently opened editor tabs.
